@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aura-poc-a-core"
+version = "0.1.0"
+description = "Deterministic Proof-of-Consistency Core"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["."]
