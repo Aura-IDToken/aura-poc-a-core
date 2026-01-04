@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "certificate_id": "uuid-v4",
+  "agent": {
+    "id": "aura-agent",
+    "constitution_hash": "sha256"
+  },
+  "event": {
+    "timestamp": "ISO-8601",
+    "summary": "string"
+  },
+  "poca": {
+    "score": 0.0,
+    "status": "COMPLIANT | DRIFT | FAIL"
+  },
+  "audit": {
+    "leaf": "sha256",
+    "root": "sha256"
+  },
+  "signature": "base64"
+}
