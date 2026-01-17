@@ -1,7 +1,5 @@
-# aura-poc-a-core
-
-Deterministic Proof-of-Consistency (PoCA) Core  
-with Cryptographic Audit & Compliance Outputs
+# Aura Protocol: Iron Core (Sandbox Minimal)
+Deterministic Proof-of-Consistent-Agency (PoCA) for the 2026 AI Regulatory Sandbox.
 
 ---
 
