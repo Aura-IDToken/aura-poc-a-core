@@ -2,7 +2,7 @@ class RegulatoryPolicy:
     """EU AI Act compliance shield (Art. 5, 14)"""
     
     # Regulatory constants
-    DRIFT_THRESHOLD = 0.7  # Semantic alignment threshold for drift detection
+    DRIFT_THRESHOLD = 0.68  # Semantic alignment threshold for drift detection
     DRIFT_PENALTY = 1.5    # Penalty applied when drift is detected
     
     HALTED_AGENTS = set()
