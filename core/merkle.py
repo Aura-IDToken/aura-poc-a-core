@@ -2,7 +2,7 @@ import hashlib
 import json
 
 class MerkleAttestor:
-    """Art. 12 & 13: Kryptograficzne betonowanie logów"""
+    """Art. 12 & 13: Cryptographic log immutability"""
     @staticmethod
     def generate_leaf(data: dict):
         return hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()

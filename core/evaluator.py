@@ -3,7 +3,11 @@ from typing import List, Dict
 from core.policy import RegulatoryPolicy
 
 class PoCAEvaluator:
-    """Implementacja wzoru ARI: C(Et) = 0.3*S + 0.7*SA - P"""
+    """Implementation of ARI formula: C(Et) = 0.3*S + 0.7*SA - P"""
+    
+    # ARI calculation constants
+    COMPLIANCE_THRESHOLD = 0.8  # Minimum ARI score for COMPLIANT status
+    
     def __init__(self, constitution_vector: List[float]):
         self.constitution = constitution_vector
         self.weights = {"structural": 0.3, "semantic": 0.7}
@@ -21,4 +25,8 @@ class PoCAEvaluator:
         penalty = RegulatoryPolicy.calculate_penalties(sa)
         
         ari = (self.weights["structural"] * si) + (self.weights["semantic"] * sa) - penalty
-        return {"ari": max(0.0, ari), "drift": 1.0 - sa, "status": "COMPLIANT" if ari > 0.8 else "RISK"}
+        return {
+            "ari": max(0.0, ari), 
+            "drift": 1.0 - sa, 
+            "status": "COMPLIANT" if ari > self.COMPLIANCE_THRESHOLD else "RISK"
+        }

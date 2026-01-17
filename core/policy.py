@@ -1,15 +1,20 @@
 class RegulatoryPolicy:
-    """Tarcza prawna EU AI Act (Art. 5, 14)"""
+    """EU AI Act compliance shield (Art. 5, 14)"""
+    
+    # Regulatory constants
+    DRIFT_THRESHOLD = 0.7  # Semantic alignment threshold for drift detection
+    DRIFT_PENALTY = 1.5    # Penalty applied when drift is detected
+    
     HALTED_AGENTS = set()
 
     @staticmethod
     def validate_target(target_type: str):
-        # Art. 5: Zakaz social scoringu ludzi
+        # Art. 5: Prohibition of human social scoring
         assert target_type == "MACHINE_ACCOUNT", "CRITICAL: Human scoring is strictly prohibited."
 
     @staticmethod
     def emergency_halt(agent_id: str):
-        # Art. 14: Nadzór ludzki (Kill-Switch)
+        # Art. 14: Human oversight (Kill-Switch)
         RegulatoryPolicy.HALTED_AGENTS.add(agent_id)
 
     @staticmethod
@@ -19,8 +24,8 @@ class RegulatoryPolicy:
 
     @staticmethod
     def calculate_penalties(sa_score: float) -> float:
-        # Kara za nagły dryf behawioralny (Sim < 0.7)
-        return 1.5 if sa_score < 0.7 else 0.0
+        # Penalty for sudden behavioral drift (Sim < DRIFT_THRESHOLD)
+        return RegulatoryPolicy.DRIFT_PENALTY if sa_score < RegulatoryPolicy.DRIFT_THRESHOLD else 0.0
 
 
 class PolicyRule:
