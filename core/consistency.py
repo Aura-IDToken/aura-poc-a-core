@@ -37,7 +37,12 @@ class ConsistencyCalculator:
         try:
             self._kill_switch.assert_not_halted()
         except Exception as e:
-            return self._fail(f"System halted: {str(e)}")
+            return {
+                "score": 0.0,
+                "reason": f"System halted: {str(e)}",
+                "status": "HALTED",
+                "halted": True
+            }
         
         # Structural validation
         structural = self._validate_structure(event)
@@ -59,6 +64,7 @@ class ConsistencyCalculator:
             "structural": structural,
             "semantic": semantic,
             "penalty": penalty,
+            "halted": False,
         }
 
     def _validate_structure(self, event: Dict[str, Any]) -> float:
@@ -93,5 +99,6 @@ class ConsistencyCalculator:
         return {
             "score": 0.0,
             "reason": reason,
-            "status": "FAIL"
+            "status": "FAIL",
+            "halted": False
         }

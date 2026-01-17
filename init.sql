@@ -1,5 +1,5 @@
 -- Aura PoCA Core Database Initialization
--- PostgreSQL + pgvector v0.7.0
+-- PostgreSQL + pgvector (version from pgvector/pgvector:pg16 image)
 -- Local-First Sovereign Implementation
 
 -- Enable pgvector extension

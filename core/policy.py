@@ -35,9 +35,15 @@ class PolicyRule:
         """
         try:
             return self.check_fn(event)
+        except (KeyError, AttributeError, TypeError) as e:
+            # Data structure issues indicate potential violation
+            # These are expected during policy evaluation
+            return True
         except Exception as e:
-            # Log violation but don't fail silently
-            # Any exception during policy check is treated as a violation
+            # Unexpected errors should be logged and may indicate programming errors
+            # For now, treat as violation but this should be monitored
+            import sys
+            print(f"Warning: Unexpected exception in policy '{self.name}': {e}", file=sys.stderr)
             return True
 
 

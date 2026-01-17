@@ -160,7 +160,7 @@ def test_art14_kill_switch():
     }
     
     result = calc.calculate(event)
-    if "score" in result and result["score"] == 0.0 and "halted" in str(result.get("reason", "")).lower():
+    if result.get("halted", False) and result["score"] == 0.0:
         print(f"✓ Consistency calculator respects kill-switch")
     else:
         print(f"✗ Consistency calculator did not respect kill-switch: {result}")
@@ -180,7 +180,7 @@ def test_art14_kill_switch():
     
     # Verify system operates normally
     result = calc.calculate(event)
-    if "score" in result and result["score"] > 0.0:
+    if not result.get("halted", False) and result["score"] > 0.0:
         print(f"✓ System operates normally after deactivation (score: {result['score']:.3f})")
     else:
         print(f"✗ System not operating after deactivation: {result}")

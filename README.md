@@ -20,7 +20,7 @@ with Cryptographic Audit & Compliance Outputs
 ## Technical Stack
 
 * **Logic**: Python 3.10+ (Type-hinted, Deterministic)
-* **Database**: PostgreSQL + pgvector v0.7.0 (Local-First)
+* **Database**: PostgreSQL + pgvector (Local-First)
 * **Structure**: Modular Monolith (pnpm/Turborepo)
 * **License**: Business Source License 1.1 (BSL 1.1)
 
