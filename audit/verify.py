@@ -1,4 +1,4 @@
-from merkle import sha256
+from .merkle import sha256
 
 def verify_proof(leaf, proof, root):
     current = leaf
