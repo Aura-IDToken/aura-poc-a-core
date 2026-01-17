@@ -70,9 +70,9 @@ class TestARICalculation(unittest.TestCase):
         self.assertLess(result["ari"], 1.0)
     
     def test_ari_penalty_for_drift(self):
-        """Test penalty calculation for semantic drift (SA < 0.7)"""
+        """Test penalty calculation for semantic drift (SA < 0.68)"""
         agent_id = "test_agent_004"
-        # Create a vector with low similarity (< 0.7)
+        # Create a vector with low similarity (< 0.68)
         vector = [-0.5] * 10  # Opposite direction
         valid_schema = True
         
