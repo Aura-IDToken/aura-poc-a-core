@@ -47,11 +47,26 @@ class ConsistencyCalculator:
         Calculate semantic alignment via cosine similarity in ℝ¹⁵³⁶ space.
         Returns: Cosine similarity ∈ [-1.0, 1.0], normalized to [0.0, 1.0]
         """
-        dot = sum(a*b for a, b in zip(event_vec, self.constitution))
+        # Validate dimensions
+        if len(event_vec) != 1536 or len(self.constitution) != 1536:
+            raise ValueError(
+                f"Vector dimension mismatch: event={len(event_vec)}, "
+                f"constitution={len(self.constitution)}, expected=1536"
+            )
+        
+        # Calculate norms first to check for zero vectors
         norm_a = math.sqrt(sum(a*a for a in event_vec))
         norm_b = math.sqrt(sum(b*b for b in self.constitution))
-        # Cosine similarity, normalized from [-1, 1] to [0, 1]
+        
+        # Handle zero vectors (avoid division by zero)
+        if norm_a == 0.0 or norm_b == 0.0:
+            return 0.5  # Neutral alignment for zero vectors
+        
+        # Calculate cosine similarity
+        dot = sum(a*b for a, b in zip(event_vec, self.constitution))
         cosine_sim = dot / (norm_a * norm_b)
+        
+        # Normalize from [-1, 1] to [0, 1]
         return (cosine_sim + 1.0) / 2.0
 
     def _policy_penalty(self, event):
