@@ -8,8 +8,11 @@ with Cryptographic Audit & Compliance Outputs
 ## Overview
 
 **aura-poc-a-core** is a minimal, deterministic core for evaluating and proving
-the consistency of autonomous agents (human or AI) against their declared intent
-and hard constraints.
+the consistency of autonomous AI agents (MACHINE_ACCOUNT entities only) against 
+their declared intent and hard constraints.
+
+**SCOPE:** Strictly limited to MACHINE_ACCOUNT entities.
+**PROHIBITION:** Absolute prohibition of human profiling or biometric data processing (AI Act Art. 5).
 
 This repository implements the *foundational execution layer* only.
 
@@ -54,14 +57,18 @@ Deterministic execution layer.
 
 Responsibilities:
 - Structural integrity validation
-- Semantic alignment scoring
+- Semantic alignment scoring (cosine similarity in ℝ¹⁵³⁶ space)
 - Policy enforcement
-- Consistency score calculation (PoCA)
+- Agent Reliability Index (ARI) calculation
 
 Output:
-- Numeric consistency score ∈ [0.0 – 1.0]
+- Agent Reliability Index (ARI) ∈ [0.0 – 1.0]
 - Drift signal
 - Deterministic metadata
+
+**Formula:** ARI = 0.3 × StructuralIntegrity + 0.7 × SemanticAlignment - Penalties
+
+**Note:** Uses "Agent Reliability Index" (ARI), NOT "Trust Score" to avoid Social Scoring classification.
 
 ---
 
@@ -134,7 +141,19 @@ MIT
 
 ---
 
-## Guiding Principle
+## Guiding Principles
 
+### Krasinski Principle
+> **T ∝ 1/S**  
+> Transparency (T) is inversely proportional to Secrecy/Entropy (S).  
+> Trust is modeled as behavioral consistency, not moral virtue.
+
+### Core Axiom
 > Trust is not asserted.  
 > Trust is computed — and proven.
+
+### Regulatory Compliance
+- **Agent-Only Scope:** MACHINE_ACCOUNT entities exclusively
+- **AI Act Art. 5:** Absolute prohibition of human profiling or biometric data
+- **Nomenclature:** "Agent Reliability Index" (ARI) - NOT "Trust Score"
+- **Determinism:** Same input → Same ARI (Proof of Consistent Agency)
